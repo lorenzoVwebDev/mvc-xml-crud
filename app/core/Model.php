@@ -92,10 +92,12 @@ class Model {
       if (file_exists(__DIR__."//..//models//entities//task.entity.php")) {
         require_once(__DIR__."//..//models//entities//task.entity.php");
 
-        if ($type === 'create')
+        if ($type === 'create') {
+          
+        }
 
+      } else {
+        throw new Exception('task.entity.php not found', 500);
       }
-
-
-}
+  }
 }

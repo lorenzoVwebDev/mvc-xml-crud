@@ -18,12 +18,23 @@ class Task_data {
           $this->task_data_xml = $xmlLocation->item(0)->nodeValue;
           break;
         }
-      }
-      
+      }     
     } else {
       throw new Exception("application.xml not found", 500);
     }
 
-    print $this->task_data_xml;
+    $xmlfile = file_get_contents($this->task_data_xml);
+    $xmlstring = simplexml_load_string($xmlfile);
+    if ($xmlstring === false) {
+      $errorString = "Failed loading XML: ";
+
+      foreach(libxml_get_errors() as $error) {
+        $errorString .= $error->message . " ";
+      }
+
+      throw new Exception($errorString);
+    }
+    $json = json_encode($xmlstring);
+    $this->task_array = json_decode($json, TRUE);
   } 
 }

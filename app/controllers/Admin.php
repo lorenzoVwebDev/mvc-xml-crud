@@ -12,9 +12,9 @@ class Admin extends Controller {
         'update',
         'delete'
       );
-      
+
       $needle = in_array(filter_var($type, FILTER_SANITIZE_FULL_SPECIAL_CHARS), $crudArray);
-      if (isset($_POST['task'])) {
+      if (isset($_POST['task'])&&$needle) {
         if ($type === 'insert') {
           if (isset($_POST['title'])&&isset($_POST['date'])) {
 
