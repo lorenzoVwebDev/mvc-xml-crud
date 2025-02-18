@@ -75,11 +75,11 @@
       <form id="appointment-list">
         <fieldset>
           <label for="title">Title:</label>
-          <input type="text" name="title" id="title" form="appointment-list" required/>
+          <input type="text" name="title" id="title" form="appointment-list" value="appointment" required/>
           <label for="description">Description:</label>
           <textarea name="description" id="description" form="appointment-list"></textarea>
           <label for="duedate">Due Date:</label>
-          <input type="date" name="duedate" id="duedate" form="appointment-list"/>
+          <input type="date" name="duedate" id="duedate" form="appointment-list" value="<?=date('Y-m-d')?>"/>
           <label for="priority">Priority:</label>
           <select name="priority" id="priority" form="appointment-list">
             <option value="low">Low</option>
@@ -88,7 +88,7 @@
           </select>
           <div class="form-actions">
             <input type="hidden" name="task" id="task" value="task"/>
-            <button type="submit">Add/Update</button>
+            <button type="submit" id="submit-button">Add/Update</button>
             <button type="clear">Clear</button>
           </div>
         </fieldset>
@@ -103,8 +103,14 @@
   <section class="footer-section"></section>
   <div class="modal-container">
   </div>
+
   <script src="<?= ROOT?>public/assets/bootstrap.assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
   <script src="<?= ROOT?>public/assets/js/home.js" type="module"></script>
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('submit-button').click();
+    })
+  </script>
 </body>
 </html>

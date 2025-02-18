@@ -66,11 +66,11 @@ function attachDeleteListener(type, date, url) {
 
 //crud to do list
 
-document.getElementById('appointment-list').addEventListener('submit', (event) => {
+document.getElementById('appointment-list').addEventListener('submit', async (event) => {
   try {
     event.preventDefault();
     const form = event.target;
-    const responseObject = insertTask(form, url);
+    const responseObject = await insertTask(form, url);
     const { result, response } = responseObject;
     renderNewTask(response, result);
   } catch (err) {

@@ -6,29 +6,34 @@ class Admin extends Controller {
 
   function taskcrud($type) {
     try {
-      $crudArray = (
-        'create',
-        'read',
+      $crudArray = array (
+        'insert',
+        'select',
         'update',
         'delete'
       );
 
       $needle = in_array(filter_var($type, FILTER_SANITIZE_FULL_SPECIAL_CHARS), $crudArray);
-      if (isset($_POST['task'])&&$needle) {
+      if (isset($_POST['task'])&&$needle) {    
         if ($type === 'insert') {
-          if (isset($_POST['title'])&&isset($_POST['date'])) {
-
+          if (isset($_POST['title'])&&isset($_POST['duedate'])) {
             $newTask['title'] = filter_var($_POST['title'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $newTask['description'] = $_POST['title'] ? filter_var($_POST['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
-            $newTask['duedate'] = fitler_var($_POST['duedate'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+            $newTask['duedate'] = filter_var($_POST['duedate'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
             $newTask['priority'] = $_POST['priority'] ? filter_var($_POST['priority'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
             
             $taskCrud = new Model();
-            $taskCrud->taskCrud($newTask, $type);
+            $inserted = $taskCrud->taskCrud($newTask, $type);
+            if (is_array($inserted)) {
 
+/*               http_response_code(200);
+              header('Content-Type: application/json');
+              $json = json_encode($inserted);
+              echo $json; */
+            } 
 
           } else {
-            throw new Exception('title is missing', 401)
+            throw new Exception('title is missing', 401);
           }
         }
       } else {

@@ -1,5 +1,5 @@
 <?php 
-class Dog_entity {
+class Task_entity {
 
   private $task_title = "";
   private $task_description = "";
@@ -13,12 +13,35 @@ class Dog_entity {
   );
 
   function __construct($properties_array) {
-    $error_title = $this->set_task_title($properties_array[0]) == true ? 'true,' : 'false,';
-    $error_description = $this->set_task_description($properties_array[1]) == true ? 'true,' : 'false,';
-    $error_duedate = $this->set_task_duedate($properties_array[2]) == true ? 'true,' : 'false,';
-    $error_priority = $this->set_task_priority($properties_array[3]) == true ? 'true,' : 'false,';
+    $error_title = $this->set_task_title($properties_array['title']) == true ? 'true,' : 'false,';
+    $error_description = $this->set_task_description($properties_array['description']) == true ? 'true,' : 'false,';
+    $error_duedate = $this->set_task_duedate($properties_array['duedate']) == true ? 'true,' : 'false,';
+    $error_priority = $this->set_task_priority($properties_array['priority']) == true ? 'true,' : 'false,';
 
     $this->error_message = $error_title.$error_description.$error_duedate.$error_priority;
+  }
+
+  public function insert_data() {
+    if (file_exists(__DIR__."//..//..//config//applications.xml")) {
+      require_once(__DIR__."//..//..//config//applications.xml");
+    } else {
+      throw new Exception("application.xml missing", 500);
+    }
+
+      $container = new Container('task_data_model_xml');
+      $data = $container->create_object();
+      $methods_array = get_class_methods($data);
+      $last_position = count($methods_array) - 1;
+      $method_name = $methods_array[$last_position];
+      $records_array = array(array(
+        'tasktitle' => $this->task_title,
+        'taskdescription' => $this->task_description,
+        'taskduedate' => $this->task_duedate,
+        'taskpriority' => $this->task_priority
+      ));
+      $data->method_name('create', $records_array);
+      unset($data);
+      return 'inserted';
   }
   //returns the error message
   public function to_string() {
@@ -42,7 +65,7 @@ class Dog_entity {
       $logDate = date_format($setDate, "YmdHis");
       $dateBool = true;
       if ($logDate < date("YmdHis")) {
-        $dateBool = false
+        $dateBool = false;
       } 
 
       $dateBool ? $this->task_duedate = $date : $error_message=false;
@@ -66,19 +89,19 @@ class Dog_entity {
   //breed validator method
 
   function get_task_title() {
-    return $this->dog_name;
+    return $this->task_title;
   }
 
   function get_task_description() {
-    return $this->dog_weight;
+    return $this->task_description;
   }
 
   function get_task_duedate() {
-    return $this->dog_breed;
+    return $this->task_duedate;
   }
 
   function get_task_priority() {
-    return $this->dog_color;
+    return $this->task_priority;
   }
 
   function get_properties() {

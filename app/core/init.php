@@ -5,5 +5,5 @@ require 'functions.php';
 require 'Database.php';
 require 'Model.php';
 require 'Controller.php';
-require 'Dog_container.php';
+require 'Container.php';
 require 'App.php';

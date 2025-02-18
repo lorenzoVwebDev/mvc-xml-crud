@@ -1,7 +1,7 @@
 
 export function renderNewTask(result, response) {
   if (response.status >= 200 && response.status<400) {
-    const {title, description, dueDate, priority} = result;
+    const {title, description, duedate, priority} = result;
     const taskContainer = document.getElementById('task-list');
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
@@ -10,7 +10,7 @@ export function renderNewTask(result, response) {
       <div class="task-info">
         <strong>${title}</strong>
         <p>${description}</p>
-        <small>Due: ${dueDate}</small>
+        <small>Due: ${duedate}</small>
         <small>Priority: ${priority}</small>
       </div>
       <div class="task-actions">

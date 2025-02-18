@@ -1,5 +1,5 @@
 <?php
-class Dog_container {
+class Container {
   private string $app;
   private $dog_location;
 
@@ -15,10 +15,10 @@ class Dog_container {
     $this->app=$value;
   }
 
-  public function get_dog_application() {
+  public function get_application() {
     $xmlDoc=new DOMDocument();
-    if (file_exists(__DIR__ . "//..//config//dog_applications.xml")) {
-      $xmlDoc->load(__DIR__ . "//..//config//dog_applications.xml");
+    if (file_exists(__DIR__ . "//..//config//applications.xml")) {
+      $xmlDoc->load(__DIR__ . "//..//config//applications.xml");
       $typeNodes=$xmlDoc->getElementsByTagName("type");
       foreach($typeNodes as $searchNodes) {
         $id=$searchNodes->getAttribute('ID');
@@ -30,27 +30,25 @@ class Dog_container {
         }
       }
     } else {
-      throw new Exception('"dog_container.php" dog_applications.xml not found');
+      throw new Exception('"Container.php" applications.xml not found', 500);
     }
   }
 
-  function create_object($properties) {
-    $dog_loc=__DIR__.$this->get_dog_application();
-    if(($dog_loc==false)||(!file_exists($dog_loc))) {
-      //print "doesn't work"."<br>";
-      throw new Exception('"dog_container.php"'."$doc_log".'not found');
+  function create_object($properties = []) {
+    $loc=__DIR__.$this->get_application();
+    if(($loc==false)||(!file_exists($loc))) {
+      throw new Exception('"dog_container.php"'."$loc".'not found');
       return false;
     } else {
-      if (require_once($dog_loc)) {
+      if (require_once($loc)) {
         $class_array=get_declared_classes();
         $last_position=count($class_array)-1;
         $class_name=$class_array[$last_position];
         $object=new $class_name($properties);
         return $object;
       } else {
-        throw new Exception('"dog_container.php"'."$doc_log".'cannot be retrieved');
+        throw new Exception('"container.php"'."$loc".'cannot be retrieved', 500);
       }
-
     } 
   }
 }

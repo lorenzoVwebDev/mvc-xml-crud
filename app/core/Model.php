@@ -91,9 +91,12 @@ class Model {
   function taskCrud(array $taskArray, $type = 'read') {
       if (file_exists(__DIR__."//..//models//entities//task.entity.php")) {
         require_once(__DIR__."//..//models//entities//task.entity.php");
-
-        if ($type === 'create') {
-          
+        if ($type === 'insert') {
+          $taskObject = new Task_entity($taskArray);
+          $inserted =  $taskObject->insert_data();
+          if ($inserted === 'inserted') {
+            return $taskArray;
+          } 
         }
 
       } else {
