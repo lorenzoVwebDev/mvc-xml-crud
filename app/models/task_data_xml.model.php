@@ -23,7 +23,7 @@ class Task_data {
       throw new Exception("application.xml not found", 500);
     }
 
-    $xmlfile = file_get_contents($this->task_data_xml);
+    $xmlfile = file_get_contents(__DIR__.$this->task_data_xml);
     $xmlstring = simplexml_load_string($xmlfile);
     if ($xmlstring === false) {
       $errorString = "Failed loading XML: ";
@@ -41,11 +41,11 @@ class Task_data {
   function __destruct() {
     $xmlstring = "<?xml version='1.0' encoding='UTF-8'?>";
     $xmlstring .= "<tasks>";
-    foreach ($this->task_data_xml as $tasks=>$tasks_value) {
-      foreach ($tasks as $task_index => $task_value) {
+    foreach ($this->task_array as $tasks=>$tasks_value) {
+      foreach ($tasks_value as $task_index => $task_value) {
         $xmlstring .= "<$tasks>\n";
-        foreach ($taskvalue as $column => $column_value) {
-          $xmlstring .= "<$column>" .$taskvalue[$column] . "</$column>\n";
+        foreach ($task_value as $column => $column_value) {
+          $xmlstring .= "<$column>" .$task_value[$column] . "</$column>\n";
         }
         $xmlstring .= "</$task_index>\n";
       }
@@ -55,11 +55,11 @@ class Task_data {
     $new_valid_data_file = preg_replace('/[0-9]+/','', $this->task_data_xml);
     $oldxmldata = date('mdy').$new_valid_data_file;
 
-    if (!rename(ROOT.".//app//storage//xml//$this->task_data_xml", ROOT."//app//storage//$oldxmldata")) {
+    if (!rename(__DIR__."$this->task_data_xml", __DIR__."$oldxmldata")) {
       throw new Exception("Backup file $oldxmldata could not be created", 500); 
     }
 
-    $filecreation = file_put_contents(ROOT.".//app//storage//xml//$new_valid_data_file");
+    $filecreation = file_put_contents(__DIR__."$new_valid_data_file", $xmlstring);
 
     if (!$filecreation) {
       throw new Exception("Can't create a new file", 500);
@@ -67,10 +67,10 @@ class Task_data {
   }
 
   function createRecord($records_array) {
-    $tasks_array_size = count($this->task_array['tasks']);
+    $task_array_size = count($this->task_array['task']);
 
     for ($J=0;$J<count($records_array);$J++) {
-      $this->tasks_array['tasks'][$taks_array_size+$J] = $records_array[$J];
+      $this->task_array['task'][$task_array_size+$J] = $records_array[$J];
     }
   }
 
@@ -99,7 +99,7 @@ class Task_data {
     }
   }
 
-  function processRecords(string $crud_type, array|int $new_array) {
+  function processRecords(string $crud_type, array $records_array, int $record_number = 0) {
     switch ($crud_type) {
       case "insert":
         $this->createRecord($records_array);

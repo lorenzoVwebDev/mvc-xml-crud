@@ -93,7 +93,7 @@ class Model {
         require_once(__DIR__."//..//models//entities//task.entity.php");
         if ($type === 'insert') {
           $taskObject = new Task_entity($taskArray);
-          $inserted =  $taskObject->insert_data();
+          $inserted =  $taskObject->insert_data($type);
           if ($inserted === 'inserted') {
             return $taskArray;
           } 

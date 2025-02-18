@@ -21,7 +21,7 @@ class Task_entity {
     $this->error_message = $error_title.$error_description.$error_duedate.$error_priority;
   }
 
-  public function insert_data() {
+  public function insert_data($type) {
     if (file_exists(__DIR__."//..//..//config//applications.xml")) {
       require_once(__DIR__."//..//..//config//applications.xml");
     } else {
@@ -39,7 +39,7 @@ class Task_entity {
         'taskduedate' => $this->task_duedate,
         'taskpriority' => $this->task_priority
       ));
-      $data->method_name('create', $records_array);
+      $data->$method_name($type, $records_array);
       unset($data);
       return 'inserted';
   }
