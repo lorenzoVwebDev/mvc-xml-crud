@@ -18,18 +18,17 @@ class Admin extends Controller {
         if ($type === 'insert') {
           if (isset($_POST['title'])&&isset($_POST['duedate'])) {
             $newTask['title'] = filter_var($_POST['title'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $newTask['description'] = $_POST['title'] ? filter_var($_POST['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
+            $newTask['description'] = $_POST['description'] ? filter_var($_POST['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
             $newTask['duedate'] = filter_var($_POST['duedate'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
             $newTask['priority'] = $_POST['priority'] ? filter_var($_POST['priority'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
-            
+
             $taskCrud = new Model();
             $inserted = $taskCrud->taskCrud($newTask, $type);
             if (is_array($inserted)) {
-
-/*               http_response_code(200);
+              http_response_code(200);
               header('Content-Type: application/json');
               $json = json_encode($inserted);
-              echo $json; */
+              echo $json; 
             } 
 
           } else {

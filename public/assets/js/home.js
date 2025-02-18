@@ -72,7 +72,7 @@ document.getElementById('appointment-list').addEventListener('submit', async (ev
     const form = event.target;
     const responseObject = await insertTask(form, url);
     const { result, response } = responseObject;
-    renderNewTask(response, result);
+    renderNewTask(result, response);
   } catch (err) {
     console.error(err);
   }

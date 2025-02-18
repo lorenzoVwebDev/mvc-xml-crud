@@ -61,7 +61,7 @@
             </select>
             <label class="birthdate">
                 Log Date
-            <input type="date" name="log-date" id="log-date" value="<?=date('Y-m-d')?>"/>
+            <input type="date" name="log-date" id="log-date" value="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>"/>
             </label>
             <input type="submit" name="download" value="download"/>
             <input type="submit" name="show-table" value="show-table"/>

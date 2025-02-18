@@ -28,7 +28,7 @@ class Logs_model {
         $row_count--;
         unset($logsArray[$row_count]);
         fclose($logFile);
-        if (trim($logsArray[count($logsArray) - 1][2]) === trim($this->log_message)) {
+        if (trim($logsArray[count($logsArray)-1][2]) === trim($this->log_message)) {
           $last_log_message = trim($logsArray[count($logsArray) - 1][2]);
           unset($logsArray);
           return $last_log_message;

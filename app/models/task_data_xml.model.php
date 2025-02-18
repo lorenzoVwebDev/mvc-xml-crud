@@ -24,6 +24,7 @@ class Task_data {
     }
 
     $xmlfile = file_get_contents(__DIR__.$this->task_data_xml);
+
     $xmlstring = simplexml_load_string($xmlfile);
     if ($xmlstring === false) {
       $errorString = "Failed loading XML: ";
@@ -35,31 +36,37 @@ class Task_data {
       throw new Exception($errorString);
     }
     $json = json_encode($xmlstring);
-    $this->task_array = json_decode($json, TRUE);
+    $decoded = json_decode($json, TRUE);
+    $this->task_array = json_decode($json, TRUE); 
   } 
 
   function __destruct() {
     $xmlstring = "<?xml version='1.0' encoding='UTF-8'?>";
-    $xmlstring .= "<tasks>";
+    $xmlstring .= "<tasks>"."\n";
     foreach ($this->task_array as $tasks=>$tasks_value) {
-      foreach ($tasks_value as $task_index => $task_value) {
-        $xmlstring .= "<$tasks>\n";
-        foreach ($task_value as $column => $column_value) {
-          $xmlstring .= "<$column>" .$task_value[$column] . "</$column>\n";
+      foreach ($tasks_value as $task_index=>$task_array) {
+        $xmlstring .= "<task>"."\n";
+        foreach ($task_array as $task_spec => $task_spec_value) {
+          if (is_array($task_spec_value)) {
+            $xmlstring .= "<$task_spec>"."none"."</$task_spec>"."\n";
+          } else {
+            $xmlstring .= "<$task_spec>"."$task_spec_value"."</$task_spec>"."\n";
+          }
         }
-        $xmlstring .= "</$task_index>\n";
+        $xmlstring.="</task>"."\n";
       }
     }
-    $xmlstring .= "</$tasks>\n";
+    $xmlstring .= "</tasks>";
 
     $new_valid_data_file = preg_replace('/[0-9]+/','', $this->task_data_xml);
-    $oldxmldata = date('mdy').$new_valid_data_file;
+    $oldxmldata = trim($new_valid_data_file, '.xml',).date('mdy').".xml";
 
-    if (!rename(__DIR__."$this->task_data_xml", __DIR__."$oldxmldata")) {
+    $renameBool = rename(__DIR__.$this->task_data_xml, __DIR__.$oldxmldata);
+    if (!$renameBool) {
       throw new Exception("Backup file $oldxmldata could not be created", 500); 
     }
 
-    $filecreation = file_put_contents(__DIR__."$new_valid_data_file", $xmlstring);
+    $filecreation = file_put_contents(__DIR__.$new_valid_data_file, $xmlstring);
 
     if (!$filecreation) {
       throw new Exception("Can't create a new file", 500);

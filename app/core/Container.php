@@ -4,11 +4,7 @@ class Container {
   private $dog_location;
 
   function __construct($value) {
-    if(function_exists('get_properties')) {
       $this->app=$value;
-    } else {
-      exit;
-    }
   }
 
   public function set_app($value) {

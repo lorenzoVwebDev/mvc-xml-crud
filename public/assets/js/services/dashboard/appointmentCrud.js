@@ -7,8 +7,7 @@ export async function insertTask(form, url) {
   });
 
   if (response.status >= 200 && response.status < 400) {
-    console.log(response)
-    const result = await response.text()
+    const result = await response.json()
     return {
       result,
       response

@@ -2,7 +2,8 @@
 export function renderNewTask(result, response) {
   if (response.status >= 200 && response.status<400) {
     const {title, description, duedate, priority} = result;
-    const taskContainer = document.getElementById('task-list');
+    const taskContainer = document.getElementById('tasklist');
+    console.log(taskContainer)
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
   

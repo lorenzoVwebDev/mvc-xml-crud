@@ -17,16 +17,11 @@ class Task_entity {
     $error_description = $this->set_task_description($properties_array['description']) == true ? 'true,' : 'false,';
     $error_duedate = $this->set_task_duedate($properties_array['duedate']) == true ? 'true,' : 'false,';
     $error_priority = $this->set_task_priority($properties_array['priority']) == true ? 'true,' : 'false,';
-
+    
     $this->error_message = $error_title.$error_description.$error_duedate.$error_priority;
   }
 
   public function insert_data($type) {
-    if (file_exists(__DIR__."//..//..//config//applications.xml")) {
-      require_once(__DIR__."//..//..//config//applications.xml");
-    } else {
-      throw new Exception("application.xml missing", 500);
-    }
 
       $container = new Container('task_data_model_xml');
       $data = $container->create_object();
@@ -39,7 +34,7 @@ class Task_entity {
         'taskduedate' => $this->task_duedate,
         'taskpriority' => $this->task_priority
       ));
-      $data->$method_name($type, $records_array);
+      $data->$method_name($type, $records_array); 
       unset($data);
       return 'inserted';
   }
@@ -56,19 +51,19 @@ class Task_entity {
 
   public function set_task_description(string $value):bool {
     $error_message = true;
-    (is_string($value)&&(strlen($value)>5&&strlen($value)<100)) ? $this->task_description=$value:$error_message=false;
+    (is_string($value)&&(strlen($value)>5&&strlen($value)<100) || $value === 'none') ? $this->task_description=$value:$error_message=false;
     return $error_message;
   }
 
   public function set_task_duedate(string $date):bool {
+      $error_message = true;
       $setDate = date_create($date);
-      $logDate = date_format($setDate, "YmdHis");
+      $logDate = date_format($setDate, "Ymd");
       $dateBool = true;
-      if ($logDate < date("YmdHis")) {
+      if ($logDate < date("Ymd")) {
         $dateBool = false;
       } 
-
-      $dateBool ? $this->task_duedate = $date : $error_message=false;
+      $dateBool ? $this->task_duedate = $date : $error_message = false;
       return $error_message;
   }
 
