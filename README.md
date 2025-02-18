@@ -1,16 +1,8 @@
-# “Dog creation engine”
+# "Mvc-xml-crud”
 
 ✅ [Check out my WebSite to watch many other portfolio projects](https://lorenzo-viganego.com/)
 
-Description:
-
-•	A simple dog creation engine that involves: 
-
-•	MVC approach among modules
-
-•	Ajax request in the interface-tier/lab.html
-
-•	Dependecies injection among modules (particularly in the interface-tier/dog_interface.php)
+Project in development.
 
 # Connect with me
 
