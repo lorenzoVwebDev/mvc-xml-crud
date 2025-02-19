@@ -14,10 +14,10 @@
 <body>
   <section class="git-header-section"></section>
   <section class="main-header">
-    </section>
+  </section>
 
   <section class="main-section">
-    <section class="mail-section">
+    <!-- <section class="mail-section">
       <h3>Send events table to the admin's mail</h3>      
       <form id="mail-form">
           <div class="input-container">
@@ -50,7 +50,6 @@
           </div>
         </form>
     </section>
-
     <section class="logs-section">
       <h3>Download events table o render it</h3>
           <form id="log-form">  
@@ -68,7 +67,7 @@
           </form>
         <section class="table-section">
         </section>
-    </section>
+    </section> -->
 
     <section class="crud-section">
       <h3>CRUD operations on Logs</h3>
@@ -108,9 +107,9 @@
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
   <script src="<?= ROOT?>public/assets/js/home.js" type="module"></script>
   <script>
-    window.addEventListener('load', () => {
+/*     window.addEventListener('load', () => {
       document.getElementById('submit-button').click();
-    })
+    }) */
   </script>
 </body>
 </html>

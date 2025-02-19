@@ -1,35 +1,40 @@
 //services
 import { insertTask } from './services/dashboard/appointmentCrud.js'
-import { downloadLogFile } from './services/dashboard/download.logfile.js';
-import { deleteLog } from './services/dashboard/deleteLog.logfile.js';
-import { logEvent } from './services/dashboard/logevent.logfile.js';
-import { downloadTable } from './services/dashboard/download.table.js'; 
-import { submitMail } from './services/dashboard/submit.mailform.js'
 //views
-import { appendButtons, appendDelete } from './view/dashboard/appendelement.view.js';
-import { createTableAndMail } from "./view/dashboard/table.view.js";
-import { renderResponse } from './view/dashboard/mailresponse.view.js'
-import { downloadLogFileView } from './view/dashboard/downloadlog.view.js'
 import { renderNewTask } from './view/dashboard/appointmentCrud.view.js';
 //global variables
 import { url } from './utils/globalVariables.js'
 
 
-//send mail part
-if (document.getElementById('mail-form')) {
-  document.getElementById('mail-form').addEventListener('submit', async event => {
-    try {
-      const responseObject = await submitMail(event, url);
-      const { response, result } = responseObject;
-      renderResponse(response, result);
-    } catch (error) {
-      console.log(error)
-    }
-  })
+const handleClick = (event) => {
+  deleteTask(event)
+}
+
+
+document.getElementById('appointment-list').addEventListener('submit', async (event) => {
+  try {
+    event.preventDefault();
+    const form = event.target;
+    const responseObject = await insertTask(form, url);
+    const { result, response } = responseObject;
+    renderNewTask(result, response);
+    document.querySelectorAll('.delete-task').forEach((element) => {
+      element.removeEventListener('click', handleClick)
+      element.addEventListener('click', handleClick)
+    })
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
+
+function deleteTask(event) {
+  console.dir(event);
 }
 
 //Download exception log and render table
-document.getElementById('log-form').addEventListener('submit', async (event) => {
+/* document.getElementById('log-form').addEventListener('submit', async (event) => {
   event.preventDefault();
   try {
     const type = event.target[0].value;  
@@ -62,21 +67,7 @@ function attachDeleteListener(type, date, url) {
       attachDeleteListener(type, date, url, response)
     })
   })
-}
-
-//crud to do list
-
-document.getElementById('appointment-list').addEventListener('submit', async (event) => {
-  try {
-    event.preventDefault();
-    const form = event.target;
-    const responseObject = await insertTask(form, url);
-    const { result, response } = responseObject;
-    renderNewTask(result, response);
-  } catch (err) {
-    console.error(err);
-  }
-});
+} */
 
 
 

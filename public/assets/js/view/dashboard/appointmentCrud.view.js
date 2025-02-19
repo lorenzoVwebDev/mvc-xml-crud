@@ -3,7 +3,6 @@ export function renderNewTask(result, response) {
   if (response.status >= 200 && response.status<400) {
     const {title, description, duedate, priority} = result;
     const taskContainer = document.getElementById('tasklist');
-    console.log(taskContainer)
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
   
@@ -14,9 +13,9 @@ export function renderNewTask(result, response) {
         <small>Due: ${duedate}</small>
         <small>Priority: ${priority}</small>
       </div>
-      <div class="task-actions">
-        <button>Edit</button>
-        <button>Delete</button>
+      <div class="task-actions" data-id=${Date.now()}>
+        <button class="update-task">Edit</button>
+        <button class="delete-task">Delete</button>
       </div>  
     `
   
