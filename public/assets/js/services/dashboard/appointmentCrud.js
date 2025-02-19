@@ -36,3 +36,23 @@ export async function selectTask(url, id) {
     }
   }
 }
+
+
+export async function deleteTask(url, id) {
+  const response = await fetch(`${url}/admin/taskcrud/delete/${id}`, {
+    method: 'DELETE'
+  });
+  
+  if (response.status >= 200 && response.status < 400) {
+    const result = await response.text()
+    return {
+      result,
+      response
+    }
+  } else if (response.status >= 400 && response.status < 500) {
+    const result = await response.text();
+    return {
+      result, response
+    }
+  }
+}

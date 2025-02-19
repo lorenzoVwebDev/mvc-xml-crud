@@ -79,6 +79,7 @@ class Task_data {
     for ($J=0;$J<count($records_array);$J++) {
       $this->task_array['task'][$task_array_size+$J] = $records_array[$J];
     }
+
   }
 
   function readRecord($recordNumber) {

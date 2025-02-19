@@ -43,25 +43,38 @@ export function renderStoredTask(result, response) {
     taskContainer.innerHTML = '';
     const resultArray = Object.entries(result);
     resultArray.forEach((element)=> {
-
-      const task = `
-      <div class="task-info">
-        <strong>${element[1].tasktitle}</strong>
-        <p>${element[1].taskdescription}</p>
-        <small>Due: ${element[1].taskduedate}</small>
-        <small>Priority: ${element[1].taskpriority}</small>
-      </div>
-      <div class="task-actions" data-id=${element[0]}>
-        <button class="update-task">Edit</button>
-        <button class="delete-task">Delete</button>
-      </div>  
-    `
-      taskContainer.innerHTML += task;
+      if (element[0] == '0' || element[0] == '1') {
+        //nothing
+      } else {
+        const task = `
+        <div class="task-info">
+          <strong>${element[1].tasktitle}</strong>
+          <p>${element[1].taskdescription}</p>
+          <small>Due: ${element[1].taskduedate}</small>
+          <small>Priority: ${element[1].taskpriority}</small>
+        </div>
+        <div class="task-actions" data-id=${element[0]}>
+          <button class="update-task">Edit</button>
+          <button class="delete-task">Delete</button>
+        </div>  
+      `
+        taskContainer.innerHTML += task;
+      }
     })
   } else if (response.status >= 400 && response.status < 500) {
-
+    var modal = document.querySelector('.modal-container');
+    modal.style.display = 'block';
+    var modalTitle = document.getElementById('modal-title');
+    var modalText = document.getElementById('modal-text');
+    modalTitle.innerText = `Error ${result.status.toString()}`;
+    modalText.innerHTML = `${result.message}`;
   } else if (response.status >= 500) {
-
+    var modal = document.querySelector('.modal-container');
+    modal.style.display = 'block';
+    var modalTitle = document.getElementById('modal-title');
+    var modalText = document.getElementById('modal-text');
+    modalTitle.innerText = `Error ${result.status.toString()}`;
+    modalText.innerHTML = `${result.message}`;
   }
 }
 

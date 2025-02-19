@@ -1,5 +1,236 @@
-<br/><font size='1'><table class='xdebug-error xe-warning'dir='ltr'border='1'cellspacing='0'cellpadding='1'><tr><th align='left'bgcolor='#f57900'colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>(!)</span> Warning: Undefined array key "task" in C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php on line <i>87</i></th></tr><tr><th align='left'bgcolor='#e9b96e'colspan='5'>Call Stack</th></tr><tr><th align='center'bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left'bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left'bgcolor='#eeeeec'>Location</th></tr><tr><td bgcolor='#eeeeec'align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0001</td><td bgcolor='#eeeeec'align='right'>451592</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php'bgcolor='#eeeeec'>...\index.php<b>: </b>0</td></tr>
-    <tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec'align='center'>0.0027</td><td bgcolor='#eeeeec' align='right'>557624</td><td bgcolor='#eeeeec'>App->loadController()</td><td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php' bgcolor='#eeeeec'>...\index.php<b>:</b>13</td></tr><tr><td bgcolor='#eeeeec'align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0028</td><td bgcolor='#eeeeec'align='right'>558040</td><td bgcolor='#eeeeec'>Admin->taskcrud( <span>$type = </span><span>&#39;select&#39;</span> )</td><td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\App.php'bgcolor='#eeeeec'>...\App.php<b>: </b>38</td></tr>
-    <tr><td bgcolor='#eeeeec' align='center'>4</td><td bgcolor='#eeeeec'align='center'>0.0028</td><td bgcolor='#eeeeec' align='right'>559488</td><td bgcolor='#eeeeec'>Model->taskCrud(<span>$taskArray=</span><span>[&#39;id&#39; =&gt; &#39;ALL&#39;]</span>,
-    <span>$type=</span><span>&#39;select&#39;</span>)</td><td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\controllers\Admin.php' bgcolor='#eeeeec'>...\Admin.php<b>:</b>40</td></tr><tr><td bgcolor='#eeeeec'align='center'>5</td><td bgcolor='#eeeeec' align='center'>0.0105</td><td bgcolor='#eeeeec'align='right'>560296</td><td bgcolor='#eeeeec'>Task_data->processRecords( <span>$crud_type = </span><span>&#39;select&#39;</span>, <span>$records_value = </span><span>&#39;ALL&#39;</span> )</td><td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php'bgcolor='#eeeeec'>...\Model.php<b>: </b>106</td></tr>
-    <tr><td bgcolor='#eeeeec' align='center'>6</td><td bgcolor='#eeeeec'align='center'>0.0105</td><td bgcolor='#eeeeec' align='right'>560296</td><td bgcolor='#eeeeec'>Task_data->readRecord(<span>$recordNumber=</span><span>&#39;ALL&#39;</span>)</td><td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php' bgcolor='#eeeeec'>...\task_data_xml.model.php<b>:</b>117</td></tr></table></font>
+<br/>
+<font size='1'>
+    <table class='xdebug-error xe-warning' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+        <tr>
+            <th align='left' bgcolor='#f57900' colspan="5">
+                <span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span>
+                Warning: Undefined array key "task" in C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php on line <i>77</i>
+            </th>
+        </tr>
+        <tr>
+            <th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th>
+        </tr>
+        <tr>
+            <th align='center' bgcolor='#eeeeec'>#</th>
+            <th align='left' bgcolor='#eeeeec'>Time</th>
+            <th align='left' bgcolor='#eeeeec'>Memory</th>
+            <th align='left' bgcolor='#eeeeec'>Function</th>
+            <th align='left' bgcolor='#eeeeec'>Location</th>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>1</td>
+            <td bgcolor='#eeeeec' align='center'>0.0001</td>
+            <td bgcolor='#eeeeec' align='right'>453464</td>
+            <td bgcolor='#eeeeec'>{main}(  )</td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php' bgcolor='#eeeeec'>
+                ...\index.php<b>:</b>
+                0
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>2</td>
+            <td bgcolor='#eeeeec' align='center'>0.0038</td>
+            <td bgcolor='#eeeeec' align='right'>559496</td>
+            <td bgcolor='#eeeeec'>App->loadController(  )</td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php' bgcolor='#eeeeec'>
+                ...\index.php<b>:</b>
+                13
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>3</td>
+            <td bgcolor='#eeeeec' align='center'>0.0039</td>
+            <td bgcolor='#eeeeec' align='right'>559912</td>
+            <td bgcolor='#eeeeec'>
+                Admin->taskcrud( <span>$type = </span>
+                <span>&#39;insert &#39;</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\App.php' bgcolor='#eeeeec'>
+                ...\App.php<b>:</b>
+                38
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>4</td>
+            <td bgcolor='#eeeeec' align='center'>0.0039</td>
+            <td bgcolor='#eeeeec' align='right'>562000</td>
+            <td bgcolor='#eeeeec'>
+                Model->taskCrud( <span>$taskArray = </span>
+                <span>[&#39;title &#39;=&gt;&#39;appointment &#39;, &#39;description &#39;=&gt;&#39;hello &#39;, &#39;duedate &#39;=&gt;&#39;2025-02-19 &#39;, &#39;priority &#39;=&gt;&#39;low &#39;]</span>
+                , <span>$type = </span>
+                <span>&#39;insert &#39;</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\controllers\Admin.php' bgcolor='#eeeeec'>
+                ...\Admin.php<b>:</b>
+                24
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>5</td>
+            <td bgcolor='#eeeeec' align='center'>0.0041</td>
+            <td bgcolor='#eeeeec' align='right'>562528</td>
+            <td bgcolor='#eeeeec'>
+                Task_entity->insert_data( <span>$type = </span>
+                <span>&#39;insert &#39;</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php' bgcolor='#eeeeec'>
+                ...\Model.php<b>:</b>
+                96
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>6</td>
+            <td bgcolor='#eeeeec' align='center'>0.0163</td>
+            <td bgcolor='#eeeeec' align='right'>563608</td>
+            <td bgcolor='#eeeeec'>
+                Task_data->processRecords( <span>$crud_type = </span>
+                <span>&#39;insert &#39;</span>
+                , <span>$records_value = </span>
+                <span>[0 =&gt;[&#39;tasktitle &#39;=&gt;&#39;appointment &#39;, &#39;taskdescription &#39;=&gt;&#39;hello &#39;, &#39;taskduedate &#39;=&gt;&#39;2025-02-19 &#39;, &#39;taskpriority &#39;=&gt;&#39;low &#39;]]</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\entities\task.entity.php' bgcolor='#eeeeec'>
+                ...\task.entity.php<b>:</b>
+                37
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>7</td>
+            <td bgcolor='#eeeeec' align='center'>0.0163</td>
+            <td bgcolor='#eeeeec' align='right'>563608</td>
+            <td bgcolor='#eeeeec'>
+                Task_data->createRecord( <span>$records_array = </span>
+                <span>[0 =&gt;[&#39;tasktitle &#39;=&gt;&#39;appointment &#39;, &#39;taskdescription &#39;=&gt;&#39;hello &#39;, &#39;taskduedate &#39;=&gt;&#39;2025-02-19 &#39;, &#39;taskpriority &#39;=&gt;&#39;low &#39;]]</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php' bgcolor='#eeeeec'>
+                ...\task_data_xml.model.php<b>:</b>
+                115
+            </td>
+        </tr>
+    </table>
+</font>
+<br/>
+<font size='1'>
+    <table class='xdebug-error xe-uncaught-exception' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+        <tr>
+            <th align='left' bgcolor='#f57900' colspan="5">
+                <span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span>
+                Fatal error: Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given in C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php on line <i>77</i>
+            </th>
+        </tr>
+        <tr>
+            <th align='left' bgcolor='#f57900' colspan="5">
+                <span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span>
+                TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given in C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php on line <i>77</i>
+            </th>
+        </tr>
+        <tr>
+            <th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th>
+        </tr>
+        <tr>
+            <th align='center' bgcolor='#eeeeec'>#</th>
+            <th align='left' bgcolor='#eeeeec'>Time</th>
+            <th align='left' bgcolor='#eeeeec'>Memory</th>
+            <th align='left' bgcolor='#eeeeec'>Function</th>
+            <th align='left' bgcolor='#eeeeec'>Location</th>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>1</td>
+            <td bgcolor='#eeeeec' align='center'>0.0001</td>
+            <td bgcolor='#eeeeec' align='right'>453464</td>
+            <td bgcolor='#eeeeec'>{main}(  )</td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php' bgcolor='#eeeeec'>
+                ...\index.php<b>:</b>
+                0
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>2</td>
+            <td bgcolor='#eeeeec' align='center'>0.0038</td>
+            <td bgcolor='#eeeeec' align='right'>559496</td>
+            <td bgcolor='#eeeeec'>App->loadController(  )</td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php' bgcolor='#eeeeec'>
+                ...\index.php<b>:</b>
+                13
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>3</td>
+            <td bgcolor='#eeeeec' align='center'>0.0039</td>
+            <td bgcolor='#eeeeec' align='right'>559912</td>
+            <td bgcolor='#eeeeec'>
+                Admin->taskcrud( <span>$type = </span>
+                <span>&#39;insert &#39;</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\App.php' bgcolor='#eeeeec'>
+                ...\App.php<b>:</b>
+                38
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>4</td>
+            <td bgcolor='#eeeeec' align='center'>0.0039</td>
+            <td bgcolor='#eeeeec' align='right'>562000</td>
+            <td bgcolor='#eeeeec'>
+                Model->taskCrud( <span>$taskArray = </span>
+                <span>[&#39;title &#39;=&gt;&#39;appointment &#39;, &#39;description &#39;=&gt;&#39;hello &#39;, &#39;duedate &#39;=&gt;&#39;2025-02-19 &#39;, &#39;priority &#39;=&gt;&#39;low &#39;]</span>
+                , <span>$type = </span>
+                <span>&#39;insert &#39;</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\controllers\Admin.php' bgcolor='#eeeeec'>
+                ...\Admin.php<b>:</b>
+                24
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>5</td>
+            <td bgcolor='#eeeeec' align='center'>0.0041</td>
+            <td bgcolor='#eeeeec' align='right'>562528</td>
+            <td bgcolor='#eeeeec'>
+                Task_entity->insert_data( <span>$type = </span>
+                <span>&#39;insert &#39;</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php' bgcolor='#eeeeec'>
+                ...\Model.php<b>:</b>
+                96
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>6</td>
+            <td bgcolor='#eeeeec' align='center'>0.0163</td>
+            <td bgcolor='#eeeeec' align='right'>563608</td>
+            <td bgcolor='#eeeeec'>
+                Task_data->processRecords( <span>$crud_type = </span>
+                <span>&#39;insert &#39;</span>
+                , <span>$records_value = </span>
+                <span>[0 =&gt;[&#39;tasktitle &#39;=&gt;&#39;appointment &#39;, &#39;taskdescription &#39;=&gt;&#39;hello &#39;, &#39;taskduedate &#39;=&gt;&#39;2025-02-19 &#39;, &#39;taskpriority &#39;=&gt;&#39;low &#39;]]</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\entities\task.entity.php' bgcolor='#eeeeec'>
+                ...\task.entity.php<b>:</b>
+                37
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>7</td>
+            <td bgcolor='#eeeeec' align='center'>0.0163</td>
+            <td bgcolor='#eeeeec' align='right'>563608</td>
+            <td bgcolor='#eeeeec'>
+                Task_data->createRecord( <span>$records_array = </span>
+                <span>[0 =&gt;[&#39;tasktitle &#39;=&gt;&#39;appointment &#39;, &#39;taskdescription &#39;=&gt;&#39;hello &#39;, &#39;taskduedate &#39;=&gt;&#39;2025-02-19 &#39;, &#39;taskpriority &#39;=&gt;&#39;low &#39;]]</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php' bgcolor='#eeeeec'>
+                ...\task_data_xml.model.php<b>:</b>
+                115
+            </td>
+        </tr>
+    </table>
+</font>

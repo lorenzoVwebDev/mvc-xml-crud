@@ -1,5 +1,5 @@
 //services
-import { insertTask, selectTask } from './services/dashboard/appointmentCrud.js'
+import { insertTask, selectTask, deleteTask } from './services/dashboard/appointmentCrud.js'
 //views
 import { renderNewTask, renderStoredTask } from './view/dashboard/appointmentCrud.view.js';
 //global variables
@@ -34,10 +34,19 @@ document.getElementById('read-task').addEventListener('click', async (event) => 
   const {result, response} = responseObject;
   console.log(result)
   renderStoredTask(result, response);
+  document.querySelectorAll('.delete-task').forEach((element) => {
+    element.removeEventListener('click', handleClick)
+    element.addEventListener('click', handleClick)
+  })
 })
 
 function deleteTask(event) {
-  
+  const taskId = event.target.parentElement.dataset.id;
+
+/*   const responseObject = await selectTask(url, arrayId);
+  const {result, response} = responseObject;
+  console.log(result)
+  renderStoredTask(result, response); */
 }
 
 
