@@ -20,7 +20,6 @@ class Admin extends Controller {
             $newTask['description'] = $_POST['description'] ? filter_var($_POST['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
             $newTask['duedate'] = filter_var($_POST['duedate'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
             $newTask['priority'] = $_POST['priority'] ? filter_var($_POST['priority'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
-
             $taskCrud = new Model();
             $inserted = $taskCrud->taskCrud($newTask, $type);
             if (is_array($inserted)) {
@@ -34,8 +33,16 @@ class Admin extends Controller {
             throw new Exception('title is missing', 401);
           }
 
-      } else if ($type === 'select'&&$needle) {
-        
+      } else if ($type === 'select'&&$needle&&$_GET['id']) {
+        $id['id'] = $_GET['id'];
+        $taskCrud = new Model();
+        $taskArray = $taskCrud->taskCrud($id, $type);
+        if (is_array($taskArray)) {
+          http_response_code(200);
+          header('Content-Type: application/json');
+          $json = json_encode($taskArray);
+          echo $json; 
+        } 
       } else {
         throw new Exception('form not valid', 401);
       }

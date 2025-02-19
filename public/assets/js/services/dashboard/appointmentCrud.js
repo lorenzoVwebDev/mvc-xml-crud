@@ -20,8 +20,8 @@ export async function insertTask(form, url) {
   }
 }
 
-export async function readTask(url) {
-  const response = await fetch(`${url}/admin/taskcrud/select`);
+export async function selectTask(url, id) {
+  const response = await fetch(`${url}/admin/taskcrud/select?id=${id}`);
   
   if (response.status >= 200 && response.status < 400) {
     const result = await response.json()

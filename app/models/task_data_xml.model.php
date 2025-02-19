@@ -33,7 +33,7 @@ class Task_data {
         $errorString .= $error->message . " ";
       }
 
-      throw new Exception($errorString);
+      throw new Exception($errorString, 500);
     }
     $json = json_encode($xmlstring);
     $decoded = json_decode($json, TRUE);
@@ -82,16 +82,17 @@ class Task_data {
   }
 
   function readRecord($recordNumber) {
+
     if ($recordNumber === 'ALL') {
-      return $this->tasks_array['tasks'];
+      return $this->task_array['task'];
     } else {
-      return $this->tasks_array['tasks'][$recordNumber];
+      return $this->task_array['task'][$recordNumber];
     }
   }
 
   function updateRecords($records_array) {
     foreach ($records_array as $records => $record_value) {
-      $this->tasks_array['tasks'][$records] = $records_array[$records];
+      $this->task_array['task'][$records] = $records_array[$records];
     }
   }
 
@@ -106,19 +107,20 @@ class Task_data {
     }
   }
 
-  function processRecords(string $crud_type, array $records_array, int $record_number = 0) {
+  function processRecords(string $crud_type, array|int|string $records_value) {
+
     switch ($crud_type) {
       case "insert":
-        $this->createRecord($records_array);
+        $this->createRecord($records_value);
         break;
       case "select":
-        $this->readRecord($record_number);
+        return $this->readRecord($records_value);
         break;
       case "update":
-        $this->updateRecords($records_array);
+        $this->updateRecords($records_value);
         break;
       case "delete":
-        $this->deleteRecord($record_number);
+        $this->deleteRecord($records_value);
         break;
       default:
         throw new Exception("Invalid CRUD operation type: $crud_type", 401);

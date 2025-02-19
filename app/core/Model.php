@@ -97,6 +97,18 @@ class Model {
           if ($inserted === 'inserted') {
             return $taskArray;
           } 
+        } else if ($type === 'select') {
+          $container = new Container('task_data_model_xml');
+          $taskDataModel = $container->create_object();
+          $methods = get_class_methods($taskDataModel);
+          $lastPosition= count($methods) - 1;
+          $method_name = $methods[$lastPosition];
+          $array = $taskDataModel->$method_name($type, $taskArray['id']);
+          if (is_array($array)) {
+            return $array;
+          } else {
+            throw new Exception('string to array conversion failed in task_dat_xml.model.php', 500);
+          }
         }
 
       } else {

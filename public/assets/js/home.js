@@ -1,11 +1,14 @@
 //services
-import { insertTas, readTask } from './services/dashboard/appointmentCrud.js'
+import { insertTask, selectTask } from './services/dashboard/appointmentCrud.js'
 //views
-import { renderNewTask } from './view/dashboard/appointmentCrud.view.js';
+import { renderNewTask, renderStoredTask } from './view/dashboard/appointmentCrud.view.js';
 //global variables
 import { url } from './utils/globalVariables.js'
 
 
+const handleClick = (event) => {
+  deleteTask(event)
+}
 
 
 document.getElementById('appointment-list').addEventListener('submit', async (event) => {
@@ -24,12 +27,19 @@ document.getElementById('appointment-list').addEventListener('submit', async (ev
   }
 });
 
-
 document.getElementById('read-task').addEventListener('click', async (event) => {
-  const responseObject = await readTask(url);
-
-  console.log(responseObject)
+  const data = event.target.dataset;
+  const arrayId = data.id
+  const responseObject = await selectTask(url, arrayId);
+  const {result, response} = responseObject;
+  console.log(result)
+  renderStoredTask(result, response);
 })
+
+function deleteTask(event) {
+  
+}
+
 
 
 

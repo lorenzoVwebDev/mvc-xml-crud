@@ -41,21 +41,22 @@ export function renderStoredTask(result, response) {
   if (response.status >= 200 && response.status<400) {
     const taskContainer = document.getElementById('tasklist');
     taskContainer.innerHTML = '';
+    const resultArray = Object.entries(result);
+    resultArray.forEach((element)=> {
 
-    result.forEach(element => {
       const task = `
       <div class="task-info">
-        <strong>${element.title}</strong>
-        <p>${element.description}</p>
-        <small>Due: ${element.duedate}</small>
-        <small>Priority: ${element.priority}</small>
+        <strong>${element[1].tasktitle}</strong>
+        <p>${element[1].taskdescription}</p>
+        <small>Due: ${element[1].taskduedate}</small>
+        <small>Priority: ${element[1].taskpriority}</small>
       </div>
-      <div class="task-actions" data-id=${element.id}>
+      <div class="task-actions" data-id=${element[0]}>
         <button class="update-task">Edit</button>
         <button class="delete-task">Delete</button>
       </div>  
     `
-      taskContainer.append(task);
+      taskContainer.innerHTML += task;
     })
   } else if (response.status >= 400 && response.status < 500) {
 

@@ -41,7 +41,7 @@
           </div>
         </fieldset>
       </form>
-      <button id="read-task">Open Task List</button>
+      <button id="read-task" data-id="ALL">Open Task List</button>
       <div id="tasklist" class="tasklist"></div>
     </section>
 

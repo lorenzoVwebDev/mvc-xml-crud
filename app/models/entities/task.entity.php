@@ -17,7 +17,7 @@ class Task_entity {
     $error_description = $this->set_task_description($properties_array['description']) == true ? 'true,' : 'false,';
     $error_duedate = $this->set_task_duedate($properties_array['duedate']) == true ? 'true,' : 'false,';
     $error_priority = $this->set_task_priority($properties_array['priority']) == true ? 'true,' : 'false,';
-    
+
     $this->error_message = $error_title.$error_description.$error_duedate.$error_priority;
   }
 
@@ -51,7 +51,7 @@ class Task_entity {
 
   public function set_task_description(string $value):bool {
     $error_message = true;
-    (is_string($value)&&(strlen($value)>5&&strlen($value)<100) || $value === 'none') ? $this->task_description=$value:$error_message=false;
+    ((is_string($value)&&(strlen($value)>0 && strlen($value)<100)) || $value === 'none') ? $this->task_description=$value:$error_message=false;
     return $error_message;
   }
 
