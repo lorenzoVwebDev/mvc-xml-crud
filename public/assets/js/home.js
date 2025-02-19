@@ -1,14 +1,11 @@
 //services
-import { insertTask } from './services/dashboard/appointmentCrud.js'
+import { insertTas, readTask } from './services/dashboard/appointmentCrud.js'
 //views
 import { renderNewTask } from './view/dashboard/appointmentCrud.view.js';
 //global variables
 import { url } from './utils/globalVariables.js'
 
 
-const handleClick = (event) => {
-  deleteTask(event)
-}
 
 
 document.getElementById('appointment-list').addEventListener('submit', async (event) => {
@@ -28,47 +25,11 @@ document.getElementById('appointment-list').addEventListener('submit', async (ev
 });
 
 
+document.getElementById('read-task').addEventListener('click', async (event) => {
+  const responseObject = await readTask(url);
 
-function deleteTask(event) {
-  console.dir(event);
-}
-
-//Download exception log and render table
-/* document.getElementById('log-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
-  try {
-    const type = event.target[0].value;  
-    const date = event.target[1].value;  
-    if (event.submitter.value === 'download') {
-      const resultObject = await downloadLogFile(type, date, url);
-      const {response, result} = resultObject;
-      downloadLogFileView(response, result, type);
-    } else if (event.submitter.value === 'show-table') {
-      const { response, result} = await downloadTable(type, date, url);
-      const table = createTableAndMail(response, result);
-      appendDelete(table);
-      attachDeleteListener(type, date, url)
-    }
-  } catch (error) {
-    console.error(error)
-  }
+  console.log(responseObject)
 })
-
-function attachDeleteListener(type, date, url) {
-  document.querySelectorAll('.delete-log').forEach( element => {
-    element.addEventListener('click', async () => {
-      console.log('hello')
-      await deleteLog(type, element, url);
-      const {result, response} = await downloadTable(type, date, url);
-      console.log(response)
-      const table = createTableAndMail(response, result);
-      console.log(table)
-      appendDelete(table);
-      attachDeleteListener(type, date, url, response)
-    })
-  })
-} */
-
 
 
 

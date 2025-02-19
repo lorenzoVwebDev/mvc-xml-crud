@@ -14,8 +14,7 @@ class Admin extends Controller {
       );
 
       $needle = in_array(filter_var($type, FILTER_SANITIZE_FULL_SPECIAL_CHARS), $crudArray);
-      if (isset($_POST['task'])&&$needle) {    
-        if ($type === 'insert') {
+      if (isset($_POST['task'])&&$needle&&$type === 'insert') {    
           if (isset($_POST['title'])&&isset($_POST['duedate'])) {
             $newTask['title'] = filter_var($_POST['title'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $newTask['description'] = $_POST['description'] ? filter_var($_POST['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
@@ -34,7 +33,9 @@ class Admin extends Controller {
           } else {
             throw new Exception('title is missing', 401);
           }
-        }
+
+      } else if ($type === 'select'&&$needle) {
+        
       } else {
         throw new Exception('form not valid', 401);
       }

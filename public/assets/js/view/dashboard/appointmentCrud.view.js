@@ -37,6 +37,33 @@ export function renderNewTask(result, response) {
   }
 }
 
+export function renderStoredTask(result, response) {
+  if (response.status >= 200 && response.status<400) {
+    const taskContainer = document.getElementById('tasklist');
+    taskContainer.innerHTML = '';
+
+    result.forEach(element => {
+      const task = `
+      <div class="task-info">
+        <strong>${element.title}</strong>
+        <p>${element.description}</p>
+        <small>Due: ${element.duedate}</small>
+        <small>Priority: ${element.priority}</small>
+      </div>
+      <div class="task-actions" data-id=${element.id}>
+        <button class="update-task">Edit</button>
+        <button class="delete-task">Delete</button>
+      </div>  
+    `
+      taskContainer.append(task);
+    })
+  } else if (response.status >= 400 && response.status < 500) {
+
+  } else if (response.status >= 500) {
+
+  }
+}
+
 
 
 

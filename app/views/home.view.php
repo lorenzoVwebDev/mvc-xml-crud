@@ -17,57 +17,6 @@
   </section>
 
   <section class="main-section">
-    <!-- <section class="mail-section">
-      <h3>Send events table to the admin's mail</h3>      
-      <form id="mail-form">
-          <div class="input-container">
-            <label class="name">
-              Name
-              <input type="text" placeholder="Insert your name" pattern="[A-Za-z]+" minlenght="5" maxlenght="25" name="name" value="<?=ADMINNAME?>" required />
-            </label>
-            <label class="surname">
-              Surname
-              <input type="text" placeholder="Insert your Surname" pattern="[A-Za-z]+" minlenght="5" maxlenght="25" name="surname" value="<?=ADMINSURNAME?>"required/>
-            </label>
-            <label class="birthdate">
-              Log Date
-              <input type="date" name="log-date" id="log-date" value="<?=date('Y-m-d')?>"/>
-            </label>
-            <label class="social">
-              Log Table
-              <select id="mail-form" name="type">
-                <option value="exception" selected>Exception</option>
-                <option value="error">Error</option>
-                <option value="access">Access</option>
-              </select>
-            </label>
-            <label> 
-              e-mail
-              <input type="email" placeholder="insert your mail" name="email" value="<?=ADMINMAIL?>"required/>
-            </label>
-            <input type="text" value="table-mail" id="mail" name="form-hidden" hidden/>
-            <input type="submit" value="Submit"/>
-          </div>
-        </form>
-    </section>
-    <section class="logs-section">
-      <h3>Download events table o render it</h3>
-          <form id="log-form">  
-            <select id="mail-form" name="log-type" form="log-form">
-            <option value="exception" selected>Exception</option>
-            <option value="error">Error</option>
-            <option value="access">Access</option>
-            </select>
-            <label class="birthdate">
-                Log Date
-            <input type="date" name="log-date" id="log-date" value="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>"/>
-            </label>
-            <input type="submit" name="download" value="download"/>
-            <input type="submit" name="show-table" value="show-table"/>
-          </form>
-        <section class="table-section">
-        </section>
-    </section> -->
 
     <section class="crud-section">
       <h3>CRUD operations on Logs</h3>
@@ -92,6 +41,7 @@
           </div>
         </fieldset>
       </form>
+      <button id="read-task">Open Task List</button>
       <div id="tasklist" class="tasklist"></div>
     </section>
 

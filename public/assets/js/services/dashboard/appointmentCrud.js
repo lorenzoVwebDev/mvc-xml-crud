@@ -19,3 +19,20 @@ export async function insertTask(form, url) {
     }
   }
 }
+
+export async function readTask(url) {
+  const response = await fetch(`${url}/admin/taskcrud/select`);
+  
+  if (response.status >= 200 && response.status < 400) {
+    const result = await response.json()
+    return {
+      result,
+      response
+    }
+  } else if (response.status >= 400 && response.status < 500) {
+    const result = await response.json();
+    return {
+      result, response
+    }
+  }
+}
