@@ -117,6 +117,14 @@ class Model {
           $last_method = $methods[count($methods)-1];
           $taskDataModel->$last_method($type, $taskArray);
           return $taskArray;
+        } else if ($type === 'update') {
+          $container = new Container('task_data_model_xml');
+          $taskDataModel = $container->create_object();
+          $methods = get_class_methods($taskDataModel);
+          $lastPosition = count($methods)-1;
+          $method_name = $methods[$lastPosition];
+          $taskDataModel->$method_name($type, $taskArray);
+          return 'updated';
         }
       } else {
         throw new Exception('task.entity.php not found', 500);

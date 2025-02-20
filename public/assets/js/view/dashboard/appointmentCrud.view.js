@@ -1,7 +1,7 @@
 
 export function renderNewTask(result, response) {
   if (response.status >= 200 && response.status<400) {
-    const {title, description, duedate, priority} = result;
+    const {title, description, duedate, priority, index} = result;
     const taskContainer = document.getElementById('tasklist');
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
@@ -13,7 +13,7 @@ export function renderNewTask(result, response) {
         <small>Due: ${duedate}</small>
         <small>Priority: ${priority}</small>
       </div>
-      <div class="task-actions" data-id=${Date.now()}>
+      <div class="task-actions" data-id=${index}>
         <button class="update-task">Edit</button>
         <button class="delete-task">Delete</button>
       </div>  
@@ -84,6 +84,7 @@ export function renderEditModal() {
   document.getElementById('close-button').addEventListener('click', () => {
     modal.style.display = 'none';
   })
+  return modal;
 }
 
 

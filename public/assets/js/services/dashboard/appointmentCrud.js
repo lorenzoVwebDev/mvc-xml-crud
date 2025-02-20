@@ -74,7 +74,7 @@ export async function updateTask(url, form) {
   });
 
   if (response.status >= 200 && response.status < 400) {
-    const result = await response.json()
+    const result = await response.text()
     return {
       result,
       response

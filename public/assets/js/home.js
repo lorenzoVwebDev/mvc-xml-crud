@@ -18,14 +18,15 @@ const deleteClick = async (event) => {
 
 const updateClick = async (event) => {
   const id = event.target.parentElement.dataset.id;
-  renderEditModal();
+  const modal = renderEditModal();
   document.getElementById('update-appointment-list').addEventListener('submit', (newEvent) => {
     newEvent.preventDefault();
-    console.log('hello')
     const form = new FormData(newEvent.target);
     form.append('id', id);
     const responseObject = updateTask(url, form);
     const {result, response} = responseObject;
+    modal.style.display = 'none';
+    document.getElementById('read-task').click()
   })
 }
 

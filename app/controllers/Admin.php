@@ -58,8 +58,27 @@ class Admin extends Controller {
         }
       } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $type==='update'&&$needle) {
         $updatedTask = file_get_contents('php://input', true);
-        $updatedTaskArray = json_decode($updatedTask);
-        show($updatedTaskArray['title']);
+        if ($updatedTask === null) {
+          throw new Exception('invalid data', 400);
+        }
+        $updatedTaskArray = json_decode($updatedTask, true);
+        $newTask['title'] = filter_var($updatedTaskArray['title'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $newTask['description'] = $updatedTaskArray['description'] ? filter_var($updatedTaskArray['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
+        $newTask['duedate'] = filter_var($updatedTaskArray['duedate'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+        $newTask['priority'] = $updatedTaskArray['priority'] ? filter_var($updatedTaskArray['priority'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'none';
+        $id = filter_var($updatedTaskArray['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $updatedArray = array(
+          $id => $newTask
+        );
+        $taskCrud = new Model();
+        $updated = $taskCrud->taskCrud($updatedArray, $type);
+
+        if ($updated === 'updated') {
+          http_response_code(200);
+          headers('Content-Type: text/plain');
+          echo $updated;
+        }
+
       } else {
         throw new Exception('request not valid', 401);
       }

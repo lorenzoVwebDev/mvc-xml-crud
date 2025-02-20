@@ -33,7 +33,7 @@ class Container {
   function create_object($properties = []) {
     $loc=__DIR__.$this->get_application();
     if(($loc==false)||(!file_exists($loc))) {
-      throw new Exception('"dog_container.php"'."$loc".'not found');
+      throw new Exception('"dog_container.php"'."$loc".'not found', 500);
       return false;
     } else {
       if (require_once($loc)) {

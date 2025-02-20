@@ -93,8 +93,10 @@ class Task_data {
 
   function updateRecords($records_array) {
     foreach ($records_array as $records => $record_value) {
+
       $this->task_array['task'][$records] = $records_array[$records];
     }
+
   }
 
   function deleteRecord($recordNumber) {
