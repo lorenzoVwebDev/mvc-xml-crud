@@ -88,13 +88,14 @@ class Model {
     } 
   }
 
-  function taskCrud(array $taskArray, $type = 'read') {
+  function taskCrud(array|int $taskArray, $type = 'read') {
       if (file_exists(__DIR__."//..//models//entities//task.entity.php")) {
         require_once(__DIR__."//..//models//entities//task.entity.php");
         if ($type === 'insert') {
           $taskObject = new Task_entity($taskArray);
-          $inserted =  $taskObject->insert_data($type);
-          if ($inserted === 'inserted') {
+          $newTaskIndex =  $taskObject->insert_data($type);
+          if (is_numeric($newTaskIndex)) {
+            $taskArray['index'] = $newTaskIndex;
             return $taskArray;
           } 
         } else if ($type === 'select') {
@@ -109,8 +110,14 @@ class Model {
           } else {
             throw new Exception('string to array conversion failed in task_dat_xml.model.php', 500);
           }
+        } else if ($type === 'delete') {
+          $container = new Container('task_data_model_xml');
+          $taskDataModel = $container->create_object();
+          $methods = get_class_methods($taskDataModel);
+          $last_method = $methods[count($methods)-1];
+          $taskDataModel->$last_method($type, $taskArray);
+          return $taskArray;
         }
-
       } else {
         throw new Exception('task.entity.php not found', 500);
       }

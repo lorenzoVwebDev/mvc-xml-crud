@@ -27,7 +27,7 @@
           <label for="description">Description:</label>
           <textarea name="description" id="description" form="appointment-list"></textarea>
           <label for="duedate">Due Date:</label>
-          <input type="date" name="duedate" id="duedate" form="appointment-list" value="<?=date('Y-m-d')?>"/>
+          <input type="date" name="duedate" id="duedate" form="appointment-list" min="<?=date('Y-m-d')?>" value="<?=date('Y-m-d')?>"/>
           <label for="priority">Priority:</label>
           <select name="priority" id="priority" form="appointment-list">
             <option value="low">Low</option>
@@ -52,14 +52,16 @@
   <section class="footer-section"></section>
   <div class="modal-container">
   </div>
+  <div class="edit-modal-container">
+  </div>
 
   <script src="<?= ROOT?>public/assets/bootstrap.assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
   <script src="<?= ROOT?>public/assets/js/home.js" type="module"></script>
   <script>
-/*     window.addEventListener('load', () => {
-      document.getElementById('submit-button').click();
-    }) */
+    window.addEventListener('load', () => {
+      document.getElementById('read-task').click();
+    })
   </script>
 </body>
 </html>

@@ -34,9 +34,9 @@ class Task_entity {
         'taskduedate' => $this->task_duedate,
         'taskpriority' => $this->task_priority
       ));
-      $data->$method_name($type, $records_array); 
+      $newTaskIndex = $data->$method_name($type, $records_array); 
       unset($data);
-      return 'inserted';
+      return $newTaskIndex;
   }
   //returns the error message
   public function to_string() {

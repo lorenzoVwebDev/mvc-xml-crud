@@ -1,13 +1,24 @@
 //services
-import { insertTask, selectTask, deleteTask } from './services/dashboard/appointmentCrud.js'
+import { insertTask, selectTask, deleteTask, updateTask } from './services/dashboard/appointmentCrud.js'
 //views
-import { renderNewTask, renderStoredTask } from './view/dashboard/appointmentCrud.view.js';
+import { renderNewTask, renderStoredTask, renderEditModal } from './view/dashboard/appointmentCrud.view.js';
 //global variables
 import { url } from './utils/globalVariables.js'
 
 
-const handleClick = (event) => {
-  deleteTask(event)
+const deleteClick = async (event) => {
+  const id = event.target.parentElement.dataset.id;
+  deleteTask(url, id);
+  const responseObject = await selectTask(url, 'ALL');
+  const {result, response} = responseObject;
+  renderStoredTask(result, response);
+  addDelete();
+  addEdit();
+}
+
+const updateClick = async (event) => {
+  const id = event.target.parentElement.dataset.id;
+  renderEditModal();
 }
 
 
@@ -18,35 +29,39 @@ document.getElementById('appointment-list').addEventListener('submit', async (ev
     const responseObject = await insertTask(form, url);
     const { result, response } = responseObject;
     renderNewTask(result, response);
-    document.querySelectorAll('.delete-task').forEach((element) => {
-      element.removeEventListener('click', handleClick)
-      element.addEventListener('click', handleClick)
-    })
+    addDelete();
+    addEdit()
   } catch (err) {
     console.error(err);
   }
 });
 
 document.getElementById('read-task').addEventListener('click', async (event) => {
+  try {
   const data = event.target.dataset;
   const arrayId = data.id
   const responseObject = await selectTask(url, arrayId);
   const {result, response} = responseObject;
-  console.log(result)
   renderStoredTask(result, response);
-  document.querySelectorAll('.delete-task').forEach((element) => {
-    element.removeEventListener('click', handleClick)
-    element.addEventListener('click', handleClick)
-  })
+  addDelete();
+  addEdit()
+  } catch (err) {
+    console.error(err)
+  }
 })
 
-function deleteTask(event) {
-  const taskId = event.target.parentElement.dataset.id;
+function addDelete() {
+    document.querySelectorAll('.delete-task').forEach((element) => {
+    element.removeEventListener('click', deleteClick)
+    element.addEventListener('click', deleteClick)
+  })
+}
 
-/*   const responseObject = await selectTask(url, arrayId);
-  const {result, response} = responseObject;
-  console.log(result)
-  renderStoredTask(result, response); */
+function addEdit() {
+  document.querySelectorAll('.update-task').forEach((element) => {
+    element.removeEventListener('click', updateClick)
+    element.addEventListener('click', updateClick)
+  })
 }
 
 
@@ -75,42 +90,3 @@ function deleteTask(event) {
 
 
 
-
-
-
-
-/* document.querySelectorAll('.log-form').forEach(element => {
-  element.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    try {
-      const resultObject = await logEvent(event, url);
-      const { result, type } = resultObject;
-      const displayBool = appendButtons(result);
-      if (!displayBool) throw new Error("Error 404");
-        document.querySelector(`.${type}-download-button`).addEventListener('click', async (event) => {
-        downloadLogFile(type, url) 
-      })
-
-      document.querySelector(`.${type}-table-button`).addEventListener('click', async (event) => {
-        const result = await downloadTable(type, url);
-        const table = createTableAndMail(result);
-        appendDelete(table);
-        attachDeleteListener(type, url)
-      })
-    } catch (err) {
-      console.error(err)
-    }
-  })
-})
-//recursive function that call itself each time
-function attachDeleteListener(type, url) {
-  document.querySelectorAll('.delete-log').forEach( element => {
-    element.addEventListener('click', async () => {
-      await deleteLog(type, element, url);
-      const result = await downloadTable(type, url);
-      const table = createTableAndMail(result);
-      appendDelete(table);
-      attachDeleteListener(type, url)
-    })
-  })
-} */

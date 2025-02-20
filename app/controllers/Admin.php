@@ -43,8 +43,21 @@ class Admin extends Controller {
           $json = json_encode($taskArray);
           echo $json; 
         } 
+      } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $type==='delete'&&$needle) {
+        $urlArray = explode('/',$_GET['url']);
+        $id = $urlArray[count($urlArray)-1];
+        if (preg_match('/^\d*$/', $id) === 1) {
+          $idNum = (int)$id;
+          $taskCrud = new Model();
+          $deleted = $taskCrud->taskCrud($idNum, $type);
+          if ($deleted === $idNum) {
+            http_response_code(200);
+            header('Content-Type: text/plain');
+            echo $idNum;
+          } 
+        }
       } else {
-        throw new Exception('form not valid', 401);
+        throw new Exception('request not valid', 401);
       }
     } catch (Exception $e) {
       if ($e->getCode() >= 400 && $e->getCode() < 500) {

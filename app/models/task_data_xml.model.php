@@ -79,7 +79,7 @@ class Task_data {
     for ($J=0;$J<count($records_array);$J++) {
       $this->task_array['task'][$task_array_size+$J] = $records_array[$J];
     }
-
+    return $newTaskIndex = count($this->task_array['task'])-1;
   }
 
   function readRecord($recordNumber) {
@@ -98,21 +98,26 @@ class Task_data {
   }
 
   function deleteRecord($recordNumber) {
+    $oldArray = $this->task_array['task'];
     foreach ($this->task_array as $tasks=>&$tasks_value) {
-      for ($J =$recordNumber; $J<count($taks_value)-1;$J++) {
+      for ($J =$recordNumber; $J<count($tasks_value)-1;$J++) {
         foreach ($tasks_value[$J] as $column => $column_value) {
           $tasks_value[$J][$column] = $tasks_value[$J+1][$column];
         }
       }
-      unset($taska_value[count($tasks_value)-1]);
+      unset($tasks_value[count($tasks_value)-1]);
     }
+    $newArray = $this->task_array['task'];
+    if (!($oldArray[$recordNumber+1] == $newArray[$recordNumber])) {
+      throw new Exception('deleteRecord is not working properly', 500);
+    } 
   }
 
   function processRecords(string $crud_type, array|int|string $records_value) {
 
     switch ($crud_type) {
       case "insert":
-        $this->createRecord($records_value);
+        return $this->createRecord($records_value);
         break;
       case "select":
         return $this->readRecord($records_value);
@@ -121,7 +126,7 @@ class Task_data {
         $this->updateRecords($records_value);
         break;
       case "delete":
-        $this->deleteRecord($records_value);
+        return $this->deleteRecord($records_value);
         break;
       default:
         throw new Exception("Invalid CRUD operation type: $crud_type", 401);

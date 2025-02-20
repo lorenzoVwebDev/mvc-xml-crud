@@ -78,6 +78,11 @@ export function renderStoredTask(result, response) {
   }
 }
 
+export function renderEditModal() {
+  var modal = document.querySelector('.edit-modal-container');
+  modal.style.display = 'block';
+}
+
 
 
 
