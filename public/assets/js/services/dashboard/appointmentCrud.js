@@ -60,11 +60,17 @@ export async function deleteTask(url, id) {
 }
 
 export async function updateTask(url, form) {
-  const formData = new FormData(form);
-  
-  const response = await fetch(`${url}/admin/taskcrud/insert`, {
-    method: 'POST',
-    body: formData
+  let formObject = {};
+  form.forEach((input, key) => {
+    formObject[key] = input
+  })
+
+  const response = await fetch(`${url}/admin/taskcrud/update`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formObject)
   });
 
   if (response.status >= 200 && response.status < 400) {

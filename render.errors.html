@@ -1,41 +1,61 @@
-<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSignin">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content rounded-4 shadow">
-        <div class="modal-header p-5 pb-4 border-bottom-0">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-  
-        <div class="modal-body p-5 pt-0">
-            <form id="appointment-list">
-                <fieldset>
-                    <div class="form-floating mb-3">
-                    <label for="title">Title:</label>
-                    <input class="form-control rounded-3" type="text" name="title" id="title" form="appointment-list" value="appointment" required/>
-                    </div>
-                    <div class="form-floating mb-3">
-                    <label for="description">Description:</label>
-                    <textarea name="description" id="description" form="appointment-list"></textarea>
-                    </div>
-                    <div class="form-floating mb-3">
-                    <label for="duedate">Due Date:</label>
-                    <input type="date" name="duedate" id="duedate" form="appointment-list" value="<?=date('Y-m-d')?>"/>
-                    </div>
-                    <div class="form-floating mb-3">
-                    <label for="priority">Priority:</label>
-                    <select name="priority" id="priority" form="appointment-list">
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                    </div>
-                    <div class="form-actions form-floating mb-3">
-                    <input type="hidden" name="task" id="task" value="task"/>
-                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" id="submit-button">Update</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<br/>
+<font size='1'>
+    <table class='xdebug-error xe-uncaught-exception' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+        <tr>
+            <th align='left' bgcolor='#f57900' colspan="5">
+                <span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span>
+                Fatal error: Uncaught Error: Cannot use object of type stdClass as array in C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\controllers\Admin.php on line <i>62</i>
+            </th>
+        </tr>
+        <tr>
+            <th align='left' bgcolor='#f57900' colspan="5">
+                <span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span>
+                Error: Cannot use object of type stdClass as array in C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\controllers\Admin.php on line <i>62</i>
+            </th>
+        </tr>
+        <tr>
+            <th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th>
+        </tr>
+        <tr>
+            <th align='center' bgcolor='#eeeeec'>#</th>
+            <th align='left' bgcolor='#eeeeec'>Time</th>
+            <th align='left' bgcolor='#eeeeec'>Memory</th>
+            <th align='left' bgcolor='#eeeeec'>Function</th>
+            <th align='left' bgcolor='#eeeeec'>Location</th>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>1</td>
+            <td bgcolor='#eeeeec' align='center'>0.0002</td>
+            <td bgcolor='#eeeeec' align='right'>451912</td>
+            <td bgcolor='#eeeeec'>{main}(  )</td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php' bgcolor='#eeeeec'>
+                ...\index.php<b>:</b>
+                0
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>2</td>
+            <td bgcolor='#eeeeec' align='center'>0.0040</td>
+            <td bgcolor='#eeeeec' align='right'>557944</td>
+            <td bgcolor='#eeeeec'>App->loadController(  )</td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\public\index.php' bgcolor='#eeeeec'>
+                ...\index.php<b>:</b>
+                13
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor='#eeeeec' align='center'>3</td>
+            <td bgcolor='#eeeeec' align='center'>0.0041</td>
+            <td bgcolor='#eeeeec' align='right'>558360</td>
+            <td bgcolor='#eeeeec'>
+                Admin->taskcrud( <span>$type = </span>
+                <span>&#39;update &#39;</span>
+                )
+            </td>
+            <td title='C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\App.php' bgcolor='#eeeeec'>
+                ...\App.php<b>:</b>
+                38
+            </td>
+        </tr>
+    </table>
+</font>

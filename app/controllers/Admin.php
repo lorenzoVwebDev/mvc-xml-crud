@@ -56,6 +56,10 @@ class Admin extends Controller {
             echo $idNum;
           } 
         }
+      } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $type==='update'&&$needle) {
+        $updatedTask = file_get_contents('php://input', true);
+        $updatedTaskArray = json_decode($updatedTask);
+        show($updatedTaskArray['title']);
       } else {
         throw new Exception('request not valid', 401);
       }

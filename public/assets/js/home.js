@@ -19,6 +19,14 @@ const deleteClick = async (event) => {
 const updateClick = async (event) => {
   const id = event.target.parentElement.dataset.id;
   renderEditModal();
+  document.getElementById('update-appointment-list').addEventListener('submit', (newEvent) => {
+    newEvent.preventDefault();
+    console.log('hello')
+    const form = new FormData(newEvent.target);
+    form.append('id', id);
+    const responseObject = updateTask(url, form);
+    const {result, response} = responseObject;
+  })
 }
 
 
@@ -30,7 +38,7 @@ document.getElementById('appointment-list').addEventListener('submit', async (ev
     const { result, response } = responseObject;
     renderNewTask(result, response);
     addDelete();
-    addEdit()
+    addEdit();
   } catch (err) {
     console.error(err);
   }
