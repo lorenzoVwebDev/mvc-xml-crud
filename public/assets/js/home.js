@@ -19,14 +19,17 @@ const deleteClick = async (event) => {
 const updateClick = async (event) => {
   const id = event.target.parentElement.dataset.id;
   const modal = renderEditModal();
-  document.getElementById('update-appointment-list').addEventListener('submit', (newEvent) => {
+  document.getElementById('update-appointment-list').addEventListener('submit', async (newEvent) => {
     newEvent.preventDefault();
     const form = new FormData(newEvent.target);
     form.append('id', id);
-    const responseObject = updateTask(url, form);
-    const {result, response} = responseObject;
+    const all = await updateTask(url, form);
     modal.style.display = 'none';
-    document.getElementById('read-task').click()
+    const responseObject = await selectTask(url, all);
+    const {result, response} = responseObject;
+    renderStoredTask(result, response);
+    addDelete();
+    addEdit()
   })
 }
 
