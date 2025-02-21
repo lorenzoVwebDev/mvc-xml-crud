@@ -35,9 +35,11 @@
             <option value="high">High</option>
           </select>
           <div class="form-actions">
-            <input type="hidden" name="task" id="task" value="task"/>
-            <button type="submit" id="submit-button">Add/Update</button>
-            <button type="clear">Clear</button>
+            <div>
+              <input type="hidden" name="task" id="task" value="task"/>
+              <button type="submit" id="submit-button">Add/Update</button>
+              <button type="clear">Clear</button>
+            </div>
           </div>
         </fieldset>
       </form>
