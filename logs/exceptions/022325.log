@@ -1,0 +1,82 @@
+02.23.2025 07:55:56 | User Error | string to array conversion failed in task_dat_xml.model.php C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php
+02.23.2025 07:58:06 | User Error | string to array conversion failed in task_dat_xml.model.php C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php
+02.23.2025 08:38:03 | User Error | string to array conversion failed in task_dat_xml.model.php C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php
+02.23.2025 08:41:33 | User Error | Failed loading XML: StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: task line 4 and unparsable
+ StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: tasks line 3 and unparsable
+ Opening and ending tag mismatch: xmltasks line 2 and task
+ Extra content at the end of the document
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 08:41:49 | User Error | Failed loading XML: StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: task line 4 and unparsable
+ StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: tasks line 3 and unparsable
+ Opening and ending tag mismatch: xmltasks line 2 and task
+ Extra content at the end of the document
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 08:41:50 | User Error | Failed loading XML: StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: task line 4 and unparsable
+ StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: tasks line 3 and unparsable
+ Opening and ending tag mismatch: xmltasks line 2 and task
+ Extra content at the end of the document
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 08:41:51 | User Error | Failed loading XML: StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: task line 4 and unparsable
+ StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: tasks line 3 and unparsable
+ Opening and ending tag mismatch: xmltasks line 2 and task
+ Extra content at the end of the document
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 08:41:51 | User Error | Failed loading XML: StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: task line 4 and unparsable
+ StartTag: invalid element name
+ expected '>'
+ Opening and ending tag mismatch: tasks line 3 and unparsable
+ Opening and ending tag mismatch: xmltasks line 2 and task
+ Extra content at the end of the document
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 08:45:12 | User Error | string to array conversion failed in task_dat_xml.model.php C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php
+02.23.2025 09:13:33 | User Error | Failed loading XML: Opening and ending tag mismatch: tasks line 10 and xmltasks
+ Premature end of data in tag tasks line 3
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 09:14:53 | User Error | Failed loading XML: Opening and ending tag mismatch: tasks line 16 and xmltasks
+ Premature end of data in tag tasks line 3
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 09:15:34 | User Error | Failed loading XML: Opening and ending tag mismatch: tasks line 16 and xmltasks
+ Premature end of data in tag tasks line 3
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 09:16:08 | User Error | Failed loading XML: Opening and ending tag mismatch: tasks line 16 and xmltasks
+ Premature end of data in tag tasks line 3
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 09:16:45 | User Error | Failed loading XML: Opening and ending tag mismatch: tasks line 16 and xmltasks
+ Premature end of data in tag tasks line 3
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 09:18:25 | User Error | string to array conversion failed in task_dat_xml.model.php C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php
+02.23.2025 09:19:04 | User Error | string to array conversion failed in task_dat_xml.model.php C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\core\Model.php
+02.23.2025 11:00:46 | User Error | deleteRecord is not working properly C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 11:00:52 | User Error | deleteRecord is not working properly C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 11:00:55 | User Error | deleteRecord is not working properly C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 11:00:56 | User Error | deleteRecord is not working properly C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 11:25:16 | User Error | Failed loading XML: Opening and ending tag mismatch: task line 3 and tasks
+ Premature end of data in tag tasks line 2
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 11:27:01 | User Error | Failed loading XML: Opening and ending tag mismatch: task line 11 and tasks
+ Premature end of data in tag task line 10
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 11:27:52 | User Error | Failed loading XML: Opening and ending tag mismatch: task line 3 and tasks
+ Premature end of data in tag tasks line 2
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php
+02.23.2025 11:28:07 | User Error | Failed loading XML: Opening and ending tag mismatch: tasks line 2 and task
+ Extra content at the end of the document
+  C:\Users\loren\webDevelopment\phpExcercises\mvc-xml-crud\app\models\task_data_xml.model.php

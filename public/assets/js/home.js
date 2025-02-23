@@ -1,38 +1,44 @@
 //services
-import { insertTask, selectTask, deleteTask, updateTask } from './services/dashboard/appointmentCrud.js'
+import { insertTask, selectTask, deleteTask, updateTask } from './services/dashboard/appointmentCrud.js';
 //views
 import { renderNewTask, renderStoredTask, renderEditModal } from './view/dashboard/appointmentCrud.view.js';
 //global variables
-import { url } from './utils/globalVariables.js'
-
+import { url } from './utils/globalVariables.js';
 
 const deleteClick = async (event) => {
   const id = event.target.parentElement.dataset.id;
-  deleteTask(url, id);
+  await deleteTask(url, id);
   const responseObject = await selectTask(url, 'ALL');
-  const {result, response} = responseObject;
+  const { result, response } = responseObject;
   renderStoredTask(result, response);
   addDelete();
   addEdit();
-}
+};
 
 const updateClick = async (event) => {
-  const id = event.target.parentElement.dataset.id;
-  const modal = renderEditModal();
-  document.getElementById('update-appointment-list').addEventListener('submit', async (newEvent) => {
-    newEvent.preventDefault();
-    const form = new FormData(newEvent.target);
-    form.append('id', id);
+  const idEvent = event.target.parentElement.dataset.id;
+  const modalEvent = renderEditModal();
+
+  // Define the function reference once
+  const callUpdateTask = async (submitEvent) => {
+    submitEvent.preventDefault();
+    const form = new FormData(submitEvent.target);
+    form.append('id', idEvent);
     const all = await updateTask(url, form);
-    modal.style.display = 'none';
+    modalEvent.style.display = 'none';
     const responseObject = await selectTask(url, all.result);
-    const {result, response} = responseObject;
+    const { result, response } = responseObject;
     renderStoredTask(result, response);
     addDelete();
-    addEdit()
-  })
-}
+    addEdit();
+  };
 
+  document.querySelectorAll('.update-appointment-list').forEach(element => {
+    // Ensure we remove the old event listener before adding a new one
+    element.replaceWith(element.cloneNode(true));
+    document.querySelector('.update-appointment-list').addEventListener('submit', callUpdateTask);
+  });
+};
 
 document.getElementById('appointment-list').addEventListener('submit', async (event) => {
   try {
@@ -50,55 +56,28 @@ document.getElementById('appointment-list').addEventListener('submit', async (ev
 
 document.getElementById('read-task').addEventListener('click', async (event) => {
   try {
-  const data = event.target.dataset;
-  const arrayId = data.id
-  const responseObject = await selectTask(url, arrayId);
-  const {result, response} = responseObject;
-  renderStoredTask(result, response);
-  addDelete();
-  addEdit()
+    const data = event.target.dataset;
+    const arrayId = data.id;
+    const responseObject = await selectTask(url, arrayId);
+    const { result, response } = responseObject;
+    renderStoredTask(result, response);
+    addDelete();
+    addEdit();
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-})
+});
 
 function addDelete() {
-    document.querySelectorAll('.delete-task').forEach((element) => {
-    element.removeEventListener('click', deleteClick)
-    element.addEventListener('click', deleteClick)
-  })
+  document.querySelectorAll('.delete-task').forEach((element) => {
+    element.removeEventListener('click', deleteClick);
+    element.addEventListener('click', deleteClick);
+  });
 }
 
 function addEdit() {
   document.querySelectorAll('.update-task').forEach((element) => {
-    element.removeEventListener('click', updateClick)
-    element.addEventListener('click', updateClick)
-  })
+    element.removeEventListener('click', updateClick);
+    element.addEventListener('click', updateClick);
+  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
